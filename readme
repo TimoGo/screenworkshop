@@ -1,0 +1,27 @@
+
+Goal: a simple screen multiuser environment
+- guest users login with ssh and public key - the ssh session is starting immediately
+- guest users dont get a shell - instead the forced command= ssh option is used 
+  to start "screen" with the appropriate options
+- but be carefull: only invite trustful users - they could takeover the screen-session!
+
+1) use ./build.sh to build image
+2) configure network-settings in start.sh (vi start.sh)
+3) use ./start.sh to start container
+4) login with ssh as screen user (ssh -l screen IP) - password: changeme
+5) add an account with: sudo add-screen-user.sh
+5a) enter login name of new user
+5b) enter public key of new user
+6) as appropriate create several accounts with step 5)
+7) start screen: screen -d -m -S shared && screen -r share
+8) invite the guests to login via ssh: ssh -l guestname $IP
+   
+9) use destroy.sh to 
+9a) kill container
+9b) delete container
+9c) delete image
+
+
+Known problems
+- the session gets killed if a guest quits with exit
+

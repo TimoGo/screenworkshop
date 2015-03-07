@@ -1,0 +1,2 @@
+hardstatus alwayslastline '[%H] %Lw%=%u %d.%m.%y %c '
+multiuser on
